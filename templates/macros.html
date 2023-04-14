@@ -1,0 +1,18 @@
+{% macro game(gameMap) %}
+    <table style="border-collapse: collapse;">
+        {% for i in gameMap %}
+            <tr>
+                {% for state in i %}
+                    {% if state == 1 %}
+                        <td style="border: 1px solid black;"><div style="background-color: green; width: 10px; height: 10px;"></div></td>
+                    {% elif state == - 1 %}
+                        <td style="border: 1px solid black;"><div style="background-color: red; width: 10px; height: 10px;"></div></td>
+                    {% else %}
+                        <td style="border: 1px solid black;"><div style="background-color: white; width: 10px; height: 10px;"></div></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        
+    </table>
+{% endmacro %}

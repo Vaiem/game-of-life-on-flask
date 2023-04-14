@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="static/styles.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>хз]</title>
+	</head>
+  {% import "macros.html" as macros %}
+	<body>
+        <div class="game_bar">
+            <button> <a href="/nextGen"> следующая генерация </a> </button>
+	        <button>Button 2</button>
+        </div>
+
+        <div class="game_contain">
+            {{ macros.game(gameMap) }}
+        </div>
+
+        <a href="/"> back </a>
+	</body>
+</html>
