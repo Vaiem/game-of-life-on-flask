@@ -7,7 +7,7 @@ import time
 app = Flask(__name__)
 #app.config["game"] = Game(3, 3)
 #app.debug = True
-
+#
 
 
 @app.route("/")
