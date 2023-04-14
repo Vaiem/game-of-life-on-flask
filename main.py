@@ -12,13 +12,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def ferst():    
-    a = Game(5,5)
+    a = Game(15,15)
     return render_template("index.html" )
 
 @app.route("/game", endpoint='game')
 def game():
     mapG = Game().gameMap.tolist()
-    return render_template("game.html", gameMap= mapG)
+    return render_template("game.html", gameMap= mapG, count= Game().countGen)
 
 @app.route("/nextGen")
 def nextGen():

@@ -13,6 +13,7 @@ class Game(metaclass = SingletonMeta):
     def __init__(self, size_x= 3, size_y =3):
         self.y = size_y
         self.x = size_x
+        self.countGen = 0
         self.gameMap = self.gen_start_map()
         
 
@@ -25,6 +26,7 @@ class Game(metaclass = SingletonMeta):
         return game_map
 
     def gen_next(self):
+        self.countGen += 1
         for i in range(self.y):
             for j in range(self.x):
                 self.check_live(i,j)
