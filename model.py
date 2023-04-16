@@ -1,6 +1,15 @@
 import random
 import numpy as np
 
+from flask_wtf import FlaskForm
+from wtforms import SubmitField, IntegerField
+from wtforms.validators import DataRequired
+
+class SizeForm(FlaskForm):
+    weight = IntegerField("weight ", validators=[DataRequired()])
+    height = IntegerField("height", validators=[DataRequired()])
+    submit = SubmitField("Submit")
+
 class SingletonMeta(type):
     _instances = {}
 
@@ -8,13 +17,16 @@ class SingletonMeta(type):
         if cls not in cls._instances:
             cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
+    
+
 
 class Game(metaclass = SingletonMeta):
-    def __init__(self, size_x= 3, size_y =3):
+    def __init__(self, size_x= 3, size_y =3):    
         self.y = size_y
         self.x = size_x
         self.countGen = 0
-        self.gameMap = self.gen_start_map()
+        self.gameMap = None
+        #self.gameMap = self.gen_start_map()
         
 
     def gen_start_map(self):
@@ -23,7 +35,8 @@ class Game(metaclass = SingletonMeta):
         for i in range(self.y):
             for j in range(self.x):
                 game_map[i, j] = random.choice(state)
-        return game_map
+        self.gameMap = game_map
+        
 
     def gen_next(self):
         self.countGen += 1
